@@ -61,7 +61,7 @@ jobs:
         with:
           script: |
             const commit = await github.rest.repos.getCommit({
-              owner: 'mpv-player',
+              owner: 'h7-26',
               repo: 'mpv',
               ref: `master`
             })
@@ -105,7 +105,7 @@ jobs:
               
               try {
                 const res = await github.rest.pulls.get({
-                  owner: "mpv-player",
+                  owner: "h7-26",
                   repo: "mpv",
                   pull_number: pr_number,
                 });
@@ -560,7 +560,7 @@ jobs:
         with:
           script: |
             const sha = `${{fromJson(needs.params.outputs.params).sha}}`;
-            let note = `**MPV Git commit**: https://github.com/mpv-player/mpv/commit/${sha}\n`;
+            let note = `**MPV Git commit**: https://github.com/h7-26/mpv/commit/${sha}\n`;
             note+="**Build Time**: ${{ env.long_time }}\n";
             note+="**Build Details**: https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}\n";
             const patch_note = `${{ needs.params.outputs.patch_note }}` ;
