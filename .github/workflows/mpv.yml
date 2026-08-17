@@ -12,7 +12,7 @@ on:
       build_target:
         description: "Build target"
         required: false
-        default: "all-64bit"
+        default: "64bit-v3"
         type: choice
         options:
         - 32bit
@@ -46,7 +46,7 @@ on:
       release:
         description: "Publish a release"
         required: false
-        default: false
+        default: true
         type: boolean
       command:
         description: 'input command you want to run before build'
@@ -72,7 +72,7 @@ jobs:
         with:
           script: |
             const commit = await github.rest.repos.getCommit({
-              owner: 'mpv-player',
+              owner: 'H7-26',
               repo: 'mpv',
               ref: `master`
             })
@@ -135,7 +135,7 @@ jobs:
               
               try {
                 const res = await waitingMergeability({
-                  owner: "mpv-player",
+                  owner: "H7-26",
                   repo: "mpv",
                   pull_number: pr_number,
                 });
@@ -196,7 +196,7 @@ jobs:
       - name: Checkout toolchain
         uses: actions/checkout@v7
         with:
-          repository: shinchiro/mpv-winbuild-cmake
+          repository: H7-26/mpv-winbuild-cmake
           path: mpv-winbuild-cmake
           fetch-depth: 0
       - name: Prepare
@@ -660,7 +660,7 @@ jobs:
         with:
           script: |
             const sha = `${{ needs.params.outputs.sha }}`;
-            let note = `**MPV Git commit**: https://github.com/mpv-player/mpv/commit/${sha}\n`;
+            let note = `**MPV Git commit**: https://github.com/H7-26/mpv/commit/${sha}\n`;
             note+="**Build Time**: ${{ env.long_time }}\n";
             note+="**Compiler**: ${{ inputs.compiler }}\n";
             note+="**Build Details**: https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}\n";
