@@ -57,6 +57,8 @@ on:
       run_name:
         description: 'The name displayed in the list of workflow runs'
         required: false
+  schedule:
+    - cron: '30 18 * * *'
 
 jobs:
   params:
