@@ -57,8 +57,16 @@ on:
       run_name:
         description: 'The name displayed in the list of workflow runs'
         required: false
-#  schedule:
-#    - cron: '30 18 * * *'
+  schedule:
+    - cron: '35 14 * * *'
+
+env:
+  BUILD_TARGET: ${{ inputs.build_target || '64bit' }}
+  COMPILER: ${{ inputs.compiler || 'clang' }}
+  LGPL: ${{ inputs.lgpl == false }}
+  NEEDCLEAN: ${{ inputs.needclean == false }}
+  NO_SAVE_CACHE: ${{ inputs.no_save_cache == false }}
+  RELEASE: ${{ inputs.release == null || inputs.release == true }}
 
 jobs:
   params:
